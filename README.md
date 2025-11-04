@@ -85,11 +85,14 @@ Configuration and hyperparameters
   - smoothing / priors: Laplace or other smoothing options
   - training_epochs (if using EM / Baum-Welch)
 - RL agent
-  - algorithm: REINFORCE / A2C / PPO / DQN (algorithmic choice)
-  - learning_rate
-  - gamma (discount factor)
-  - batch_size / episodes_per_update
-  - exploration strategy (epsilon-greedy or entropy regularization)
+  -so basically to give you an idea about what parameters are used in this RL model are these three parameters (α, β, and ε) the agent is learning to guess letters in Hangman intelligently — not randomly.
+It uses a Deep Q-Network (DQN) to learn which letter to pick next based on the game state.
+  ->1. Alpha (α) — Learning Rate
+Meaning: Controls how quickly the model updates its knowledge after each step.
+ ->2. Beta (β) — Exploration Balance / HMM Weight
+  In short, β tunes the balance between model-based and learned behavior.
+ ->3. Epsilon (ε) — Exploration Rate (Epsilon-Greedy Policy)
+  Control how often the agent explores (tries new letters) vs. exploits (picks the best-known letter
   - reward shaping: per-step penalty for wrong guess, big reward for solving word
 - Logging
   - checkpoint frequency
@@ -132,7 +135,7 @@ Project structure (recommended / example)
 
 - README.md
 - SETUP.md
-- requirements.txt
+
 
 Notes and caveats
 - This repo is experimental by nature. Hyperparameters, reward shaping, and environment design influence agent behavior substantially — treat the code as a research platform rather than a production-ready solver.
